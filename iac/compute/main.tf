@@ -32,18 +32,18 @@ provider "aws" {
 }
 
 resource "aws_instance" "web_server" {
-  ami           = var.webserver_ami
-  instance_type = "t2.micro"
-  key_name      = var.key_name
-  subnet_id = data.terraform_remote_state.network.outputs.aws_pub_sn_id
-  security_groups = [data.terraform_remote_state.network.outputs.aws_sg_http_id]
+    ami           = var.webserver_ami
+    instance_type = "t2.micro"
+    key_name      = var.key_name
+    subnet_id = data.terraform_remote_state.network.outputs.aws_pub_sn_id
+    vpc_security_group_ids = [data.terraform_remote_state.network.outputs.aws_sg_http_id]
 }
 
 resource "aws_eip" "web_server_eip" {
-  depends_on = [aws_instance.web_server]
+    depends_on = [aws_instance.web_server]
 }
 
 resource "aws_eip_association" "web_server_eip_assoc" {
-  allocation_id = aws_eip.web_server_eip.allocation_id
-  instance_id = aws_instance.web_server.id
+    allocation_id = aws_eip.web_server_eip.allocation_id
+    instance_id = aws_instance.web_server.id
 }
