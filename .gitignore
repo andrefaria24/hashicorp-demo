@@ -2,3 +2,4 @@
 *.tfstate*
 *.*lock*
 *.tfvars
+_old
