@@ -35,7 +35,7 @@ resource "aws_instance" "web_server" {
   ami           = var.webserver_ami
   instance_type = "t2.micro"
   key_name      = var.key_name
-  subnet_id = var.aws_pub_subnets[0]
+  subnet_id = data.terraform_remote_state.network.outputs.aws_pub_sn_id
   security_groups = [data.terraform_remote_state.network.outputs.aws_sg_http_id]
 }
 
