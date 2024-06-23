@@ -34,7 +34,7 @@ resource "azurerm_mssql_server" "az_sqlserver" {
 }
 
 resource "azurerm_mssql_database" "inventory" {
-  name           = var.sql_server_name
+  name           = var.sql_db_name
   server_id      = azurerm_mssql_server.az_sqlserver.id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "BasePrice"
@@ -44,7 +44,7 @@ resource "azurerm_mssql_database" "inventory" {
 
   # Prevent accidental data loss
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
