@@ -44,7 +44,7 @@ resource "azurerm_mssql_database" "inventory" {
 
   # Prevent accidental data loss
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true
   }
 }
 
