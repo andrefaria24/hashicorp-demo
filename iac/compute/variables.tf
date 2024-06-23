@@ -25,3 +25,8 @@ variable "webserver_ami" {
     type = string
     default = ""
 }
+
+variable "webserver_instance_type" {
+    type = string
+    default = ""
+}
