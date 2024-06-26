@@ -5,3 +5,7 @@ output "aws_sg_http_id" {
 output "aws_pub_sn_id" {
   value = module.aws_vpc.public_subnets[0]
 }
+
+output "aws_vpc_id" {
+  value       = module.aws_vpc.main.id
+}
