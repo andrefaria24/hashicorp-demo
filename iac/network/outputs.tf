@@ -7,5 +7,5 @@ output "aws_pub_sn_id" {
 }
 
 output "aws_vpc_id" {
-  value       = module.aws_vpc.main.id
+  value = module.aws_vpc.vpc_id
 }
